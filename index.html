@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ── TOP BAR ── -->
+    <header class="top-bar">
+      <div class="greeting-block">
+        <p id="greeting-text" class="greeting-text"></p>
+        <p id="datetime-text" class="datetime-text"></p>
+      </div>
+      <div class="top-actions">
+        <!-- Custom name -->
+        <button class="btn-icon" id="name-btn" title="Set your name">✏️</button>
+        <!-- Theme toggle -->
+        <button class="btn-icon" id="theme-btn" title="Toggle dark mode">🌙</button>
+      </div>
+    </header>
+
+    <!-- Name modal -->
+    <div id="name-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="name-modal-title">
+      <div class="modal-box">
+        <h2 id="name-modal-title">What's your name?</h2>
+        <input id="name-input" type="text" placeholder="Enter your name…" maxlength="40" />
+        <div class="modal-actions">
+          <button id="name-save-btn" class="btn-primary">Save</button>
+          <button id="name-cancel-btn" class="btn-secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MAIN LAYOUT ── -->
+    <main class="dashboard">
+
+      <!-- Focus Timer -->
+      <section class="card" id="timer-card" aria-label="Focus Timer">
+        <h2 class="card-title">🍅 Focus Timer</h2>
+
+        <!-- Pomodoro duration selector (Challenge: Change Pomodoro time) -->
+        <div class="timer-duration-row">
+          <label for="duration-select">Duration:</label>
+          <select id="duration-select" aria-label="Choose timer duration">
+            <option value="25">25 min</option>
+            <option value="20">20 min</option>
+            <option value="15">15 min</option>
+            <option value="10">10 min</option>
+            <option value="5">5 min</option>
+            <option value="1">1 min (test)</option>
+          </select>
+        </div>
+
+        <div class="timer-display" id="timer-display" aria-live="polite">25:00</div>
+
+        <div class="timer-controls">
+          <button id="timer-start" class="btn-primary">Start</button>
+          <button id="timer-stop" class="btn-secondary" disabled>Stop</button>
+          <button id="timer-reset" class="btn-secondary">Reset</button>
+        </div>
+      </section>
+
+      <!-- To-Do List -->
+      <section class="card" id="todo-card" aria-label="To-Do List">
+        <h2 class="card-title">✅ To-Do List</h2>
+
+        <div class="todo-input-row">
+          <input id="todo-input" type="text" placeholder="Add a new task…" maxlength="100" aria-label="New task" />
+          <button id="todo-add-btn" class="btn-primary">Add</button>
+        </div>
+
+        <div class="todo-toolbar">
+          <label for="sort-select">Sort:</label>
+          <select id="sort-select" aria-label="Sort tasks">
+            <option value="default">Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="done">Done last</option>
+          </select>
+        </div>
+
+        <ul id="todo-list" class="todo-list" aria-label="Tasks"></ul>
+        <p id="todo-empty" class="todo-empty">No tasks yet — add one above!</p>
+      </section>
+
+      <!-- Quick Links -->
+      <section class="card" id="links-card" aria-label="Quick Links">
+        <h2 class="card-title">🔗 Quick Links</h2>
+
+        <div class="links-input-row">
+          <input id="link-name-input" type="text" placeholder="Label" maxlength="30" aria-label="Link label" />
+          <input id="link-url-input" type="url" placeholder="https://…" maxlength="200" aria-label="Link URL" />
+          <button id="link-add-btn" class="btn-primary">Add</button>
+        </div>
+
+        <div id="links-grid" class="links-grid" aria-label="Saved links"></div>
+        <p id="links-empty" class="todo-empty">No links yet — add one above!</p>
+      </section>
+
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
